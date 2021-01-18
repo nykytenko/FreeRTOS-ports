@@ -123,7 +123,7 @@ task stack, not the ISR stack). */
  * following line of code has no effect.  The interrupt priority is set by the
  * call to ConfigIntTimer1() in vApplicationSetupTickTimerInterrupt().
  */
-extern void __attribute__( (interrupt(IPL1AUTO), vector( configTICK_INTERRUPT_VECTOR ))) vPortTickInterruptHandler( void );
+//extern void __attribute__( (interrupt(IPL1AUTO), vector( configTICK_INTERRUPT_VECTOR ))) vPortTickInterruptHandler( void );
 
 /*
  * The software interrupt handler that performs the yield.  Note that, because
@@ -221,7 +221,7 @@ const uint32_t ulCompareMatch = ( (configPERIPHERAL_CLOCK_HZ / portTIMER_PRESCAL
 	T1CON = 0x0000;
 	T1CONbits.TCKPS = portPRESCALE_BITS;
 	PR1 = ulCompareMatch;
-	IPC1bits.T1IP = configKERNEL_INTERRUPT_PRIORITY;
+	IPC4bits.T1IP = configKERNEL_INTERRUPT_PRIORITY;
 
 	/* Clear the interrupt as a starting condition. */
 	IFS0bits.T1IF = 0;
